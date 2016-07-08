@@ -1,0 +1,17 @@
+/* CSS declarations go here */
+body {
+	font-family: 'Roboto', sans-serif;
+	background: #EBEEF0;
+	margin: 0;
+}
+
+
+.drawer-logo {
+	padding-top: 80px;
+	background: #263238;
+}
+
+.drawer-logo img {
+	width: 90%;
+	margin: 5%;
+}
