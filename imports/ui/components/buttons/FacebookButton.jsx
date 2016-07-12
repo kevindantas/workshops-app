@@ -1,7 +1,10 @@
-import React, { Component, PropTpes } from 'react';
+import React, { Component, PropTypes } from 'react';
 
 import RaisedButton from 'material-ui/RaisedButton';
 import FacebookIcon from '../icons/FacebookIcon';
+
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+
 
 /**
  * Button with the color and Facebook icon's
@@ -19,8 +22,23 @@ export default class FacebookButton extends Component {
 		super(props);
 
 		this.buttonStyles = {
-			color: '#fff',
-			background: '#3A589B'
+			margin: '8px 0',
+		}
+	}
+
+
+	/**
+	 * Get child context
+	 * @return {[type]} [description]
+	 */
+	getChildContext () {
+		return {
+			muiTheme: getMuiTheme({
+				palette: {
+					primary1Color: '#3A589B'
+				},
+				primary1Color: '#3A589B'
+			})
 		}
 	}
 
@@ -31,7 +49,7 @@ export default class FacebookButton extends Component {
 	 */
 	render () {
 		return (
-			<RaisedButton label={this.props.label} icon={<FacebookIcon />} className="rounded" style={this.buttonStyles} />
+			<RaisedButton label={this.props.label} icon={<FacebookIcon />} className="button" primary={true} style={this.buttonStyles} />
 		);
 	}
 }
@@ -41,5 +59,14 @@ export default class FacebookButton extends Component {
  * @type {Object}
  */
 FacebookButton.propTypes = {
-	label: PropTpes.string.isRequired
+	label: PropTypes.string.isRequired
+};
+
+
+/**
+ * Define child context
+ * @type {Object}
+ */
+FacebookButton.childContextTypes = {
+	muiTheme: PropTypes.object.isRequired
 };

@@ -1,14 +1,16 @@
-import React, { Component, PropTpes } from 'react';
+import React, { Component, PropTypes } from 'react';
 
 import RaisedButton from 'material-ui/RaisedButton';
 import GoogleIcon from '../icons/GoogleIcon';
+
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 /**
  * Button with the color and icon from Google
  *
  * @extends {Component}
  */
-export default class GoogleokButton extends Component {
+export default class GoogleButton extends Component {
 
 	/**
 	 * @constructs 
@@ -19,8 +21,23 @@ export default class GoogleokButton extends Component {
 		super(props);
 
 		this.buttonStyles = {
-			color: '#fff',
-			background: '#3A589B'
+			margin: '8px 0'
+		}
+	}
+
+
+
+	/**
+	 * Get child context
+	 * @return {[type]} [description]
+	 */
+	getChildContext () {
+		return {
+			muiTheme: getMuiTheme({
+				palette: {
+					primary1Color: '#D95032'
+				}
+			})
 		}
 	}
 
@@ -31,7 +48,7 @@ export default class GoogleokButton extends Component {
 	 */
 	render () {
 		return (
-			<RaisedButton label={this.props.label} icon={<GoogleIcon />} className="rounded" style={this.buttonStyles} />
+			<RaisedButton label={this.props.label} icon={<GoogleIcon />} className="rounded" primary={true} style={this.buttonStyles} />
 		);
 	}
 }
@@ -40,6 +57,14 @@ export default class GoogleokButton extends Component {
  * Set the comopnent's properties
  * @type {Object}
  */
-GoogleokButton.propTypes = {
-	label: PropTpes.string.isRequired
+GoogleButton.propTypes = {
+	label: PropTypes.string.isRequired
+};
+
+/**
+ * Define child context
+ * @type {Object}
+ */
+GoogleButton.childContextTypes = {
+	muiTheme: PropTypes.object.isRequired
 };

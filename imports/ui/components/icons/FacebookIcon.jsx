@@ -7,8 +7,8 @@ export default class FacebookIcon extends Component {
 	render () {
 		return (
 			<SvgIcon>
-				<path d="M32,30c0,1.104-0.896,2-2,2H2c-1.104,0-2-0.896-2-2V2c0-1.104,0.896-2,2-2h28c1.104,0,2,0.896,2,2V30z" fill="#3B5998"/>
-				<path d="M22,32V20h4l1-5h-5v-2c0-2,1.002-3,3-3h2V5c-1,0-2.24,0-4,0c-3.675,0-6,2.881-6,7v3h-4v5h4v12H22z" fill="#FFFFFF" id="f"/>
+				<path fill="#3A589B" d="M0,0v24h24V0H0z M15.3,12h-2.1v7.6H10V12H8.4V9.4H10V7.8c0-2.1,0.9-3.4,3.4-3.4h2.1V7h-1.3 c-1,0-1,0.4-1,1.1l0,1.3h2.4L15.3,12z"/>
+				<path fill="#ECEFF1" d="M15.6,9.4L15.3,12h-2.1v7.6H10V12H8.4V9.4H10V7.8c0-2.1,0.9-3.4,3.4-3.4h2.1V7h-1.3c-1,0-1,0.4-1,1.1l0,1.3 H15.6z"/>
 			</SvgIcon>
 		);
 	}

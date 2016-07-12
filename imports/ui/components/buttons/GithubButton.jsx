@@ -1,7 +1,7 @@
-import React, { Component, PropTpes } from 'react';
+import React, { Component, PropTypes } from 'react';
 
 import RaisedButton from 'material-ui/RaisedButton';
-import FacebookIcon from '../icons/FacebookIcon';
+import GithubIcon from '../icons/GithubIcon';
 
 /**
  * Button with the color and icon from Google
@@ -19,8 +19,7 @@ export default class GithubButton extends Component {
 		super(props);
 
 		this.buttonStyles = {
-			color: '#fff',
-			background: '#3A589B'
+			margin: '8px 0'
 		}
 	}
 
@@ -31,7 +30,7 @@ export default class GithubButton extends Component {
 	 */
 	render () {
 		return (
-			<RaisedButton label={this.props.label} icon={<FacebookIcon />} className="rounded" style={this.buttonStyles} />
+			<RaisedButton label={this.props.label} icon={<GithubIcon />} className="rounded" style={this.buttonStyles} />
 		);
 	}
 }
@@ -41,5 +40,5 @@ export default class GithubButton extends Component {
  * @type {Object}
  */
 GithubButton.propTypes = {
-	label: PropTpes.string.isRequired
+	label: PropTypes.string.isRequired
 };

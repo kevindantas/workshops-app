@@ -1,0 +1,30 @@
+a {
+  color: #455a64; }
+
+fieldset {
+  border: none; }
+
+.rounded {
+  border-radius: 1000px; }
+
+.button > button {
+  padding: 8px; }
+
+object[type="application/gas-events-uni"] {
+  display: none; }
+
+.login-form {
+  color: #fff;
+  background: #202020;
+  max-width: 640px;
+  min-height: 100vh; }
+  .login-form .logo {
+    background: url("../images/logo.svg") no-repeat center 50px;
+    background-size: 75%;
+    text-indent: -9999px;
+    padding: 32px;
+    padding-top: 60px;
+    margin: 0; }
+  .login-form fieldset > div {
+    width: 100%; }
+
