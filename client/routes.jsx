@@ -1,15 +1,18 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { Router, Route, browserHistory } from 'react-router';
+// import { Router, Route, browserHistory } from 'react-router';
+// 
+import { mount } from 'react-mounter';
 
-import Login from '../imports/ui/components/usuario/Login';
+import { LoginLayout } from '../imports/ui/layouts/LoginLayout';
+import Login from '../imports/ui/components/user/Login';
 
 
-Meteor.startup(() => {
-	render(
-		<Router history={ browserHistory }>
-			<Route path="/" component={ Login } />
-		</Router>,
-		document.getElementById('render-target')
-	);
-});
+
+FlowRouter.route('/', {
+	action() {
+		mount(LoginLayout, {
+			content: (<Login />)
+		})
+	}
+})
