@@ -14,6 +14,11 @@ export default class LoginField extends Component {
 
 		this.hintStyle={
 			color: '#DFDFDF'
+		};
+
+
+		this.inputStyle = {
+			color: '#F9F9F9'
 		}
 	}
 
@@ -25,7 +30,8 @@ export default class LoginField extends Component {
 				floatingLabelFixed={true}  
 				fullWidth={true} 
 				floatingLabelStyle={this.labelStyle}
-				hintStyle={this.hintStyle} />
+				hintStyle={this.hintStyle} 
+				inputStyle={this.inputStyle} />
 		);
 	}
 }

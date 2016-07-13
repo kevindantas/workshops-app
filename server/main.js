@@ -5,18 +5,18 @@ import '../imports/api/workshop/Workshop.js';
 
 
 /**
- * Usuario imports
+ * User imports
  */
-import '../imports/api/usuario/Usuario.js';
+import '../imports/api/user/User.js';
 
 
 /**
- * Grupo imports
+ * Group imports
  */
-import '../imports/api/grupo/Grupo.js';
+import '../imports/api/group/Group.js';
 
 
 /**
- * Aviso imports
+ * Notification imports
  */
-import '../imports/api/aviso/Aviso.js';
+import '../imports/api/notification/Notification.js';
