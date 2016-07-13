@@ -21,7 +21,8 @@ export default class GoogleButton extends Component {
 		super(props);
 
 		this.buttonStyles = {
-			margin: '8px 0'
+			margin: '8px 0',
+			background: 'transparent'
 		}
 	}
 
@@ -48,7 +49,7 @@ export default class GoogleButton extends Component {
 	 */
 	render () {
 		return (
-			<RaisedButton label={this.props.label} icon={<GoogleIcon />} className="rounded" primary={true} style={this.buttonStyles} />
+			<RaisedButton {...this.props} icon={<GoogleIcon />} primary={true} style={this.buttonStyles} /> 
 		);
 	}
 }

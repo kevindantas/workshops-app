@@ -19,7 +19,8 @@ export default class GithubButton extends Component {
 		super(props);
 
 		this.buttonStyles = {
-			margin: '8px 0'
+			margin: '8px 0',
+			background: 'transparent'
 		}
 	}
 
@@ -30,7 +31,7 @@ export default class GithubButton extends Component {
 	 */
 	render () {
 		return (
-			<RaisedButton label={this.props.label} icon={<GithubIcon />} className="rounded" style={this.buttonStyles} />
+			<RaisedButton {...this.props} icon={<GithubIcon />} style={this.buttonStyles} />
 		);
 	}
 }

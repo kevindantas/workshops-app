@@ -23,6 +23,7 @@ export default class FacebookButton extends Component {
 
 		this.buttonStyles = {
 			margin: '8px 0',
+			background: 'transparent'
 		}
 	}
 
@@ -49,7 +50,7 @@ export default class FacebookButton extends Component {
 	 */
 	render () {
 		return (
-			<RaisedButton label={this.props.label} icon={<FacebookIcon />} className="button" primary={true} style={this.buttonStyles} />
+			<RaisedButton {...this.props} icon={<FacebookIcon />} className="button" primary={true} style={this.buttonStyles} />
 		);
 	}
 }
