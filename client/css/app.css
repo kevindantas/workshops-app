@@ -4,27 +4,35 @@ a {
 fieldset {
   border: none; }
 
-.rounded {
-  border-radius: 1000px; }
+.rounded, .rounded > button {
+  border-radius: 1000px !important;
+  overflow: hidden; }
 
 .button > button {
-  padding: 8px; }
+  height: auto !important; }
+
+.button > button > div > div {
+  padding: 8px !important; }
 
 object[type="application/gas-events-uni"] {
   display: none; }
 
-.login-form {
+.login-layout {
   color: #fff;
   background: #202020;
   max-width: 640px;
   min-height: 100vh; }
-  .login-form .logo {
+  .login-layout a {
+    color: #F2F2F2; }
+  .login-layout .login-form fieldset {
+    margin-bottom: 40px; }
+  .login-layout .logo {
     background: url("../images/logo.svg") no-repeat center 50px;
     background-size: 75%;
     text-indent: -9999px;
     padding: 32px;
     padding-top: 60px;
     margin: 0; }
-  .login-form fieldset > div {
+  .login-layout fieldset > div {
     width: 100%; }
 
