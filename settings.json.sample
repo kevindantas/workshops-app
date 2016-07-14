@@ -1,0 +1,34 @@
+{
+	"public": {
+
+	},
+	"private": {
+		"facebook": {
+			"web": {
+				
+			},
+			"sdk": {
+				
+			}
+		},
+
+		"google": {
+			"web": {
+				"client_id": "<VALUE>",
+				"project_id": "<VALUE>",
+				"auth_uri": "<VALUE>",
+				"token_uri": "<VALUE>",
+				"auth_provider_x509_cert_url": "<VALUE>",
+				"client_secret": "<VALUE>"
+			},
+			"sdk": {
+
+			}
+		},
+
+		"github": {
+			"client_id": "<VALUE>",
+			"client_secret": "<VALUE>"
+		}
+	}
+}
