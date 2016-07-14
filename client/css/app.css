@@ -20,19 +20,31 @@ object[type="application/gas-events-uni"] {
 .login-layout {
   color: #fff;
   background: #202020;
-  max-width: 640px;
-  min-height: 100vh; }
+  min-height: 100vh;
+  overflow-y: hidden; }
   .login-layout a {
     color: #F2F2F2; }
-  .login-layout .login-form fieldset {
-    margin-bottom: 40px; }
+  .login-layout .login-form {
+    max-width: 540px;
+    margin: auto;
+    box-shadow: 0 0 28px 2px rgba(0, 0, 0, 0.5);
+    padding: 16px;
+    margin-top: 5%; }
+    .login-layout .login-form fieldset {
+      margin-bottom: 40px; }
   .login-layout .logo {
+    max-width: 400px;
     background: url("../images/logo.svg") no-repeat center 50px;
     background-size: 75%;
     text-indent: -9999px;
     padding: 32px;
     padding-top: 60px;
-    margin: 0; }
+    margin: 0 auto; }
   .login-layout fieldset > div {
     width: 100%; }
+
+@media (max-width: 640px) {
+  .login-layout .login-form {
+    box-shadow: none;
+    margin-top: 0; } }
 
