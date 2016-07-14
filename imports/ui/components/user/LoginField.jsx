@@ -5,6 +5,10 @@ import TextField from 'material-ui/TextField';
 
 export default class LoginField extends Component {
 
+
+	/**
+	 * @constructor
+	 */
 	constructor (props) {
 		super(props);
 
@@ -22,9 +26,16 @@ export default class LoginField extends Component {
 		}
 	}
 
+
+	/**
+	 * Render Component
+	 * @return {object} Rendered Component
+	 */
 	render () {
 		return (
-			<TextField type="text" 
+			<TextField 
+				type="text" 
+				required={true}
 				floatingLabelText="Login"  
 				hintText="Digite seu CPF ou email" 
 				floatingLabelFixed={true}  

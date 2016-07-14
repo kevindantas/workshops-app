@@ -23,6 +23,11 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 export default class Login extends Component {
 
+
+	/**
+	 * @constructor
+	 * @param  {object} props
+	 */
 	constructor (props) {
 		super(props);
 
@@ -47,7 +52,10 @@ export default class Login extends Component {
 		}
 	}
 
-
+	/**
+	 * Render the component
+	 * @return {dom} Rendered component
+	 */
 	render () {
 		return (
 			<form className="login-form">
@@ -60,6 +68,7 @@ export default class Login extends Component {
 					<LoginField  />
 					<TextField 
 						type="password" 
+						required={true}
 						hintText="********" 
 						floatingLabelText="Senha" 
 						floatingLabelFixed={true}  

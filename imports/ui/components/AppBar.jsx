@@ -37,7 +37,10 @@ export default class AppBarComponent extends Component {
 		this.setState({open: false});
 	}
 
-
+	/**
+	 * Render Component
+	 * @return {object} Rendered Component
+	 */
 	render() {
 		return (
 			<div>

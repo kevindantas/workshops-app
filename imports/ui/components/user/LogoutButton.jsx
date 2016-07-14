@@ -5,6 +5,8 @@ import ExitIcon from 'material-ui/svg-icons/action/exit-to-app';
 
 /**
  * Logout button  Component
+ *
+ * @extends {Component}
  */
 export default class LogoutButton extends Component {
 

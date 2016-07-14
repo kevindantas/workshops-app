@@ -15,6 +15,10 @@ export default class MainNav extends Component {
   	this.props.isOpen = false; 
   };
 
+  /**
+   * Render Component
+   * @return {object} Rendered Component
+   */
   render() {
     return (
       <div>
