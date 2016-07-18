@@ -1,3 +1,4 @@
+	import { Meteor } from 'meteor/meteor';
 import React, { Component, PropTypes } from 'react';
 
 // Inputs
@@ -52,6 +53,31 @@ export default class Login extends Component {
 		}
 	}
 
+
+	loginGithub () {
+		Meteor.loginWithGithub(function (err) {
+			if (err)
+				console.error(err);
+		});
+	}
+
+
+
+	loginGoogle () {
+		Meteor.loginWithGoogle(function (err) {
+			if (err)
+				console.error(err);
+		});
+	}
+
+
+	loginFacebook () {
+		Meteor.loginWithFacebook(function (err) {
+			if (err)
+				console.error(err);
+		});
+	}
+
 	/**
 	 * Render the component
 	 * @return {dom} Rendered component
@@ -82,9 +108,9 @@ export default class Login extends Component {
 				</fieldset>
 
 				<fieldset>
-					<GithubButton label="Login com Github" className="button" />
-					<FacebookButton label="Login com o Facebook" className="button" />
-					<GoogleButton label="Login com o Google" className="button" />
+					<GithubButton label="Login com Github" className="button" onClick={this.loginGithub.bind(this)} />
+					<FacebookButton label="Login com o Facebook" className="button" onClick={this.loginFacebok.bind(this)} />
+					<GoogleButton label="Login com o Google" className="button" onClick={this.loginGoogle.bind(this)} />
 				</fieldset>
 			</form>
 		)
