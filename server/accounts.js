@@ -31,3 +31,17 @@ ServiceConfiguration.configurations.upsert({
 	  loginStyle: "popup"
 	}
 });
+
+
+/**
+ * Configure Google Accounts service
+ */
+ServiceConfiguration.configurations.upsert({
+  service: "facebook"
+}, {
+	$set: {
+	  appId: Meteor.settings.private.facebook.web.app_id,
+	  secret: Meteor.settings.private.facebook.web.client_secret,
+	  loginStyle: "popup"
+	}
+});
