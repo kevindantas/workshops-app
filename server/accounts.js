@@ -8,11 +8,11 @@
  * Configure Github Accounts service
  */
 ServiceConfiguration.configurations.upsert({
-	serivce: 'github'
+	service: 'github'
 }, {
 	$set: {
 		clientId: Meteor.settings.private.github.client_id,
-		secret: Meteor.settings.private.github.client_secret,
+		clientSecret: Meteor.settings.private.github.client_secret,
 		loginStyle: "popup"
 	}
 })
