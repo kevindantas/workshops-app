@@ -5,14 +5,16 @@ import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
 import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
-import Drawer from 'material-ui/Drawer';
+import AppDrawer from './AppDrawer';
 
 // Icons
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
-import MenuIcon from 'material-ui/svg-icons/navigation/menu';
 import SettingsIcon from 'material-ui/svg-icons/action/settings';
 import ExitIcon from 'material-ui/svg-icons/action/exit-to-app';
 import HelpIcon from 'material-ui/svg-icons/action/help';
+
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import { lightBlue500, blueGrey600, white } from 'material-ui/styles/colors';
 
 /**
  * AppBar used by the app
@@ -21,21 +23,22 @@ import HelpIcon from 'material-ui/svg-icons/action/help';
  */
 export default class AppBarComponent extends Component {
 
-	constructor (props) {
-		super(props);
-
-	    this.state = {open: false};
+	/**
+	 * Get child context
+	 * @return {[type]} [description]
+	 */
+	getChildContext () {
+		return {
+			muiTheme: getMuiTheme({
+				palette: {
+					primary1Color: lightBlue500,
+					textColor: blueGrey600,
+					alternateTextColor: white
+				}
+			})
+		}
 	}
 
-
-
-	handleToggle () {
-		this.setState({open: !this.state.open})
-	};
-
-	handleClose () {
-		this.setState({open: false});
-	}
 
 	/**
 	 * Render Component
@@ -44,26 +47,10 @@ export default class AppBarComponent extends Component {
 	render() {
 		return (
 			<div>
-				<Drawer
-		          docked={false}
-		          open={this.state.open}
-		          onRequestChange={(open) => this.setState({open})}
-		        >
-		        	<div className="drawer-logo"> 
-		        		<img src="images/logo.svg" alt="Desenvolvedor Multiplataform" /> 
-	        		</div>
-		        	<MenuItem onTouchTap={this.handleClose.bind(this)}>Avisos</MenuItem>
-		        	<MenuItem onTouchTap={this.handleClose.bind(this)}>Workshops</MenuItem>
-		        	<MenuItem onTouchTap={this.handleClose.bind(this)}>Meus Workshops</MenuItem>
-		        </Drawer>
 				<AppBar
 			    title={this.props.title}
 			    iconElementLeft={
-			    	<IconButton 
-			    		style={{ color: 'red' }}
-			    		onClick={this.handleToggle.bind(this)}> 
-			    		<MenuIcon /> 
-		    		</IconButton>
+			    	<AppDrawer />
 			    }
 			    iconElementRight={
 			      <IconMenu
@@ -86,3 +73,7 @@ export default class AppBarComponent extends Component {
 AppBarComponent.propTypes = {
 	title: PropTypes.string.isRequired
 }
+
+AppBarComponent.childContextTypes = {
+	muiTheme: PropTypes.object.isRequired
+};
