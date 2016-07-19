@@ -17,6 +17,19 @@ fieldset {
 object[type="application/gas-events-uni"] {
   display: none; }
 
+.main-layout main {
+  max-width: 720px;
+  margin: auto; }
+
+.main-layout .workshop {
+  margin: 8px; }
+  .main-layout .workshop svg {
+    vertical-align: middle; }
+  .main-layout .workshop .meta-infos {
+    display: flex; }
+    .main-layout .workshop .meta-infos > div {
+      flex: 1 0 30%; }
+
 .login-layout {
   color: #fff;
   background: #202020;

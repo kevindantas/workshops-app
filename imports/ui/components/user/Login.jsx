@@ -57,10 +57,7 @@ export default class Login extends Component {
 	 * Login with Github account
 	 */
 	loginGithub () {
-		Meteor.loginWithGithub(function (err) {
-			if (err)
-				console.error(err);
-		});
+		Meteor.loginWithGithub(this._loginCallback);
 	}
 
 
@@ -68,20 +65,31 @@ export default class Login extends Component {
 	 * Login with Google account
 	 */
 	loginGoogle () {
-		Meteor.loginWithGoogle(function (err) {
-			if (err)
-				console.error(err);
-		});
+		Meteor.loginWithGoogle(this._loginCallback);
 	}
 
 	/**
 	 * Login with Facebook account
 	 */
 	loginFacebook () {
-		Meteor.loginWithFacebook(function (err) {
-			if (err)
-				console.error(err);
-		});
+		Meteor.loginWithFacebook(this._loginCallback);
+	}
+
+
+	/**
+	 * Callback for all avaliable logins 
+	 * @param  {object=} err - Error (if exists)
+	 */
+	_loginCallback (err) {
+		if (err) {
+			console.error(err);
+
+			return err;
+		}
+
+
+		
+		console.log(this);
 	}
 
 	/**

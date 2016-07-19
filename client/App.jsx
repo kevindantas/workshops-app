@@ -4,7 +4,6 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import { lightBlue500, blueGrey600, white } from 'material-ui/styles/colors';
 
-import AppBarComponent from '../imports/ui/components/AppBar';
 
 
 
@@ -22,7 +21,7 @@ export default class App extends Component {
 	render() {
 		return (	
 		  <MuiThemeProvider  muiTheme={muiAppTheme}>
-				<AppBarComponent title="Workshops" />
+				<div title="Workshops"></div>
 			</MuiThemeProvider>
 		);
 	}
