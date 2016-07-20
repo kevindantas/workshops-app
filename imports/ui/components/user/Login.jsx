@@ -86,10 +86,6 @@ export default class Login extends Component {
 
 			return err;
 		}
-
-
-		
-		console.log(this);
 	}
 
 	/**
