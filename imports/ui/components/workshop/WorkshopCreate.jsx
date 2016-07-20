@@ -44,10 +44,7 @@ export default class WorkshopCreate extends Component {
           <TextField 
               type="text" 
               required={true}
-              hintText="Digite o titulo" 
-              floatingLabelText="Titulo" 
-              floatingLabelFixed={true}  
-              hintStyle={this.hintStyle}
+              floatingLabelText={i18n('workshop.title')} 
               inputStyle={this.inputStyle}
               floatingLabelStyle={this.labelStyle}
               fullWidth={true} />

@@ -7,6 +7,9 @@ import App from './App.jsx';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 
+
+i18n.setDefaultLanguage('pt-BR');
+
 /*Meteor.startup(() => {
   render(<App />, document.getElementById('render-target'));
 });
