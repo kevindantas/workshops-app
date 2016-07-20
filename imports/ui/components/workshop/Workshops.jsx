@@ -65,12 +65,14 @@ export default class Workshops extends Component {
   render() {
 
     const fabStyle = {
-      
+      position: 'fixed',
+      bottom: '5%',
+      right: '5%'
     };
 
     return (
       <div>
-          <FloatingActionButton style={{backgroundColor: '#ff0'}}>
+          <FloatingActionButton style={fabStyle} href="/workshop/create">
             <AddIcon />
           </FloatingActionButton>
 
