@@ -10,7 +10,7 @@ import WorkshopCreate from '../../components/workshop/WorkshopCreate';
 FlowRouter.route('/workshop', {
 	action() {
 		mount(MainLayout, {
-			content: (<Workshops />)
+			content: (<Workshops pageTitle={i18n('menu.workshops')} />)
 		})
 	}
 });
@@ -19,7 +19,7 @@ FlowRouter.route('/workshop', {
 FlowRouter.route('/workshop/create', {
 	action() {
 		mount(MainLayout, {
-			content: (<WorkshopCreate />)
+			content: (<WorkshopCreate pageTitle={i18n('menu.workshops')} />),
 		})
 	}
 })

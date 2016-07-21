@@ -49,7 +49,8 @@ export default class WorkshopCreate extends Component {
 
   /**
    * Validate the workshops form according the HTML5 Validations
-   * @return {bool} if the form 
+   * 
+   * @return {bool} isValid - if the all form isValid
    */
   validateForm() {
 
@@ -90,7 +91,7 @@ export default class WorkshopCreate extends Component {
     }
 
     this.setState(errors);
-    
+
     return isValid;
   }
 
@@ -105,15 +106,25 @@ export default class WorkshopCreate extends Component {
     if(!this.validateForm()) return;
 
     var workshop = {
-      title: this.input.value,
-      description: this.input.value,
-      date: this.getDate(),
-      hour: this.state.time
+      title: this.refs.title.getValue(),
+      description: this.refs.description.getValue(),
+      date: this.refs.date.state.date,
+      hour: this.refs.hour.state.time,
+      tags: this.refs.tags.state.chipsData
     };
 
 
-    Meteor.call('workshop.create', workshop);
+    Meteor.call('workshop.create', workshop, (err, response, a) => {
+      if(err){
+        console.error(err);
+        return false;
+      }
 
+      FlowRouter.go('/workshop', {
+        snackbar: i18n('feedbaack.create')
+      });
+    })
+    
   }
 
 
