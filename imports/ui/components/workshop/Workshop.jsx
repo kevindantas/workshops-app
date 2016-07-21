@@ -40,32 +40,30 @@ export default class Workshop extends Component {
    * @return {dom} Rendered component
    */
   render() {
-
     return (
       <Card className="workshop">
   		  <CardMedia children={
-          // <img src={this.props.workshop.image} />
-          <img src="images/logo.svg" alt="Desenvolvedor Multiplataform" /> 
+          <img src="/images/logo.svg" alt="Desenvolvedor Multiplataform" /> 
         } />
 
         <CardTitle title={this.props.workshop.title} />
 
-        <CardText> {this.props.workshop.description} </CardText>
+        <CardText> { this.props.workshop.description } </CardText>
 
         <CardActions className="meta-infos">
           <div>
             <EventIcon />
-            {this.props.workshop.date}
+            { this.props.workshop.date.toLocaleDateString() }
           </div>
 
           <div>
             <TimeIcon />
-            {this.props.workshop.duration}
+            { this.props.workshop.hour.toLocaleTimeString() }
           </div>
 
           <div>
             <AssignmentIcon />
-            {this.props.workshop.vacancies}
+            { this.props.workshop.vacancies }
           </div>
 
         </CardActions>

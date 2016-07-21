@@ -1,3 +1,4 @@
+import { Meteor } from 'meteor/meteor';
 import React, { Component, PropTypes } from 'react';
 
 
@@ -12,9 +13,13 @@ import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 
 // Task component - represents a single todo item
 export default class Workshops extends Component {
-
-
-  /**
+  constructor(props) {
+    super(props)
+    this.state = {
+      workshopsList: []
+    };
+  }
+    /**
    * Get child context
    * @return {[type]} [description]
    */
@@ -26,36 +31,52 @@ export default class Workshops extends Component {
 
 
   getWorkshops() {
-    return [{
-      "_id": "daywgo8672t3o4ruhweali7aq6y234",
-      "title": "String",
-      "description": "String",
-      "tags": "Array<String>",
-      "date": "Datetime",
-      "duration": "Time",
-      "vacancies": "Int",
-      "students": "Array<ObjectID>",
-      "teachers": "Array<ObjectID>",
-      "files": [{
-        "name": "String=",
-        "path": "String",
-        "avaliable": "Bool" // Se o arquivo pode ser baixado pelos alunos ou não
-      }],
+    return new Promise((resolve, reject) => {
+      Meteor.call('workshop.list', (err, response) => {
+        if(err){
+          reject(err)
+          console.error(err);
+        }
 
-      "comments": [{
-        "user": "ObjectID",
-        "message": "String"
-      }]
-    }];
+        resolve(response);
+      });
+    });
+
   }
 
-
-  renderWorkshops() {
-    return this.getWorkshops().map((workshop) => (
-      <Workshop key={workshop._id} workshop={workshop} />
+  /**
+   * Render each item from workshop's response
+   * @param  {[type]} workshops [description]
+   * @return {[type]}           [description]
+   */
+  renderWorkshops(workshops) {
+    return workshops.map((workshop, _id) => (
+      <Workshop key={_id} workshop={workshop} />
     ));
   }
 
+
+  /**
+   * [componentDidMount description]
+   * @return {[type]} [description]
+   */
+  componentDidMount() {
+    this.state = {};
+      this.request =  Meteor.call('workshop.list', (err, response) => {
+        if(err) {
+          console.error(err);
+          return false;
+        }
+
+        var renderer = this.renderWorkshops(response)
+
+
+        this.setState({
+          workshops: renderer
+        });
+
+      })
+  }
 
   /**
    * Render the component
@@ -71,13 +92,14 @@ export default class Workshops extends Component {
     };
 
     return (
-      <div>
+      <section className="workshop-list">
           <FloatingActionButton style={fabStyle} href="/workshop/create">
             <AddIcon />
           </FloatingActionButton>
-
-        {this.renderWorkshops()}
-      </div>
+        <div>
+          { this.state.workshops }
+        </div>
+      </section>
     );
   }
 }
