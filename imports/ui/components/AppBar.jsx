@@ -58,8 +58,8 @@ export default class AppBarComponent extends Component {
 	        		targetOrigin={{horizontal: 'right', vertical: 'top'}}
 			        iconButtonElement={ <IconButton><MoreVertIcon /></IconButton> }
 			      >
-			        <MenuItem primaryText="Configurações" leftIcon={<SettingsIcon />} />
-			        <MenuItem primaryText="Ajuda"  leftIcon={<HelpIcon />}  />
+			        <MenuItem href="/settings" primaryText={i18n('menu.settings')} leftIcon={<SettingsIcon />} />
+			        <MenuItem href="/help" primaryText={i18n('menu.help')}  leftIcon={<HelpIcon />}  />
 			        <MenuItem primaryText="Logout"  leftIcon={<ExitIcon />}  />
 			      </IconMenu>
 			    }

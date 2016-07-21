@@ -66,11 +66,11 @@ export default class AppDrawer extends Component {
 		          onRequestChange={(open) => this.setState({open})}
 		        >
 		        	<div className="drawer-logo"> 
-		        		<img src="images/logo.svg" alt="Desenvolvedor Multiplataform" /> 
+		        		<img src="/images/logo.svg" alt="Desenvolvedor Multiplataform" /> 
 	        		</div>
-		        	<MenuItem onTouchTap={this.handleClose.bind(this)}>Avisos</MenuItem>
-		        	<MenuItem onTouchTap={this.handleClose.bind(this)}>Workshops</MenuItem>
-		        	<MenuItem onTouchTap={this.handleClose.bind(this)}>Meus Workshops</MenuItem>
+		        	<MenuItem href="/notification" onTouchTap={this.handleClose.bind(this)}>{i18n('menu.notifications')}</MenuItem>
+		        	<MenuItem href="/workshop" onTouchTap={this.handleClose.bind(this)}>{i18n('menu.workshops')}</MenuItem>
+		        	<MenuItem href="/me/workshop" onTouchTap={this.handleClose.bind(this)}>{i18n('menu.myWorkshops')}</MenuItem>
 		        </Drawer>
 
 		        <IconButton 
