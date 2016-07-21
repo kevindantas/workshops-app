@@ -30,6 +30,18 @@ object[type="application/gas-events-uni"] {
     .main-layout .workshop .meta-infos > div {
       flex: 1 0 30%; }
 
+.not-found {
+  color: #455A64; }
+  .not-found h1 {
+    margin: 0;
+    line-height: 1;
+    font-size: 8rem;
+    margin-top: 2rem;
+    font-weight: bolder;
+    text-shadow: 10px 10px 0px #B0BEC5; }
+  .not-found h2 {
+    margin-top: 1rem; }
+
 .login-layout {
   color: #fff;
   background: #202020;
