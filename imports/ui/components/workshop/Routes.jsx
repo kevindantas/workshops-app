@@ -19,7 +19,7 @@ FlowRouter.route('/workshop', {
 FlowRouter.route('/workshop/create', {
 	action() {
 		mount(MainLayout, {
-			content: (<WorkshopCreate pageTitle={i18n('menu.workshops')} />),
+			content: (<WorkshopCreate pageTitle={i18n('strings.create') + i18n('menu.workshops')} />),
 		})
 	}
 })

@@ -19,6 +19,7 @@ object[type="application/gas-events-uni"] {
 
 .main-layout main {
   max-width: 720px;
+  min-height: calc(100vh - 110px);
   margin: auto; }
 
 .main-layout .workshop {

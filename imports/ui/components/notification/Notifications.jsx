@@ -1,9 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import React, { Component, PropTypes } from 'react';
 
-
-import Workshop from './Workshop';
-
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import AddIcon from 'material-ui/svg-icons/content/add';
 
@@ -11,8 +8,10 @@ import AddIcon from 'material-ui/svg-icons/content/add';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 
-// Task component - represents a single todo item
-export default class Workshops extends Component {
+/**
+ * List all notifications from the app
+ */
+export default class Notifications extends Component {
 
   /**
    * @constructor
@@ -20,7 +19,7 @@ export default class Workshops extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      workshopsList: []
+      notificationsList: []
     };
   }
 
@@ -37,16 +36,19 @@ export default class Workshops extends Component {
 
 
   /**
-   * Render each item from workshop's response
-   * @param  {[type]} workshops [description]
+   * Render each item from notification's response
+   * @param  {[type]} notifications [description]
    * @return {[type]}           [description]
    */
-  renderWorkshops(workshops) {
-    if(workshops.length <= 0)
-      return <h1 style={{textAlign: 'center'}}>Não existe nenhum workshop cadastrado.</h1>
+  renderNotifications(notifications) {
+    if(notifications.length <= 0)
+      return <h1 style={{textAlign: 'center'}}>Não existe nenhuma notificação cadastrado.</h1>
 
-    return workshops.map((workshop, _id) => (
-      <Workshop key={_id} workshop={workshop} />
+    return notifications.map((notification, _id) => (
+      <div key={_id}>
+        <h3> {notification.title} </h3>
+        <p> {notification.description} </p>
+      </div>
     ));
   }
 
@@ -57,16 +59,16 @@ export default class Workshops extends Component {
    */
   componentDidMount() {
     this.state = {};
-      this.request =  Meteor.call('workshop.list', (err, response) => {
+      this.request =  Meteor.call('notification.list', (err, response) => {
         if(err) {
           console.error(err);
           return false;
         }
 
-        var renderer = this.renderWorkshops(response)
+        var renderer = this.renderNotifications(response)
 
         this.setState({
-          workshops: renderer
+          notifications: renderer
         });
 
       })
@@ -87,18 +89,18 @@ export default class Workshops extends Component {
     };
 
     return (
-      <section className="workshop-list">
-          <FloatingActionButton style={fabStyle} href="/workshop/create">
+      <section className="notification-list">
+          <FloatingActionButton style={fabStyle} href="/notification/create">
             <AddIcon />
           </FloatingActionButton>
         <div>
-          { this.state.workshops }
+          { this.state.notifications }
         </div>
       </section>
     );
   }
 }
 
-Workshops.childContextTypes = { 
+Notifications.childContextTypes = { 
   muiTheme: PropTypes.object.isRequired
 };

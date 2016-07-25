@@ -1,18 +1,18 @@
 import React from 'react';
 import { render } from 'react-dom';
-// import { Router, Route, browserHistory } from 'react-router';
-// 
 import { mount } from 'react-mounter';
 
 import { LoginLayout } from '../imports/ui/layouts/LoginLayout';
 import { MainLayout } from '../imports/ui/layouts/MainLayout';
 
+// General Components
 import Login from '../imports/ui/components/user/Login';
 import NotFound from '../imports/ui/components/NotFound';
 import Help from './pages/Help';
 
-
-import WorkshopRoutes from '../imports/ui/components/workshop/Routes'
+// Import all routes from other components
+import WorkshopRoutes from '../imports/ui/components/workshop/Routes';
+import NotificationRoutes from '../imports/ui/components/notification/Routes';
 
 
 FlowRouter.route('/', {
