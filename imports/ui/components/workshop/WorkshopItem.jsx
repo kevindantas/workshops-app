@@ -8,14 +8,11 @@ import AssignmentIcon from 'material-ui/svg-icons/action/assignment';
 
 import {Card, CardMedia, CardActions, CardTitle, CardText} from 'material-ui/Card';
 
-
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import { lightBlue500, blueGrey600, white } from 'material-ui/styles/colors';
  
-// Task component - represents a single todo item
-export default class Workshop extends Component {
 
-
+export default class WorkshopItem extends Component {
 
   /**
    * Get child context
@@ -72,11 +69,11 @@ export default class Workshop extends Component {
   }
 }
  
-Workshop.propTypes = {
+WorkshopItem.propTypes = {
   workshop: PropTypes.object.isRequired,
 };
 
 
-Workshop.childContextTypes = { 
+WorkshopItem.childContextTypes = { 
   muiTheme: PropTypes.object.isRequired
 };

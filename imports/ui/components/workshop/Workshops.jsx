@@ -1,8 +1,9 @@
 import { Meteor } from 'meteor/meteor';
 import React, { Component, PropTypes } from 'react';
+import { createContainer } from 'meteor/react-meteor-data';
 
-
-import Workshop from './Workshop';
+import { Workshop } from '/imports/api/workshop/Workshop';
+import WorkshopItem from './WorkshopItem';
 
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import AddIcon from 'material-ui/svg-icons/content/add';
@@ -12,16 +13,13 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 
 // Task component - represents a single todo item
-export default class Workshops extends Component {
+class Workshops extends Component {
 
   /**
    * @constructor
    */
   constructor(props) {
     super(props)
-    this.state = {
-      workshopsList: []
-    };
   }
 
 
@@ -41,36 +39,15 @@ export default class Workshops extends Component {
    * @param  {[type]} workshops [description]
    * @return {[type]}           [description]
    */
-  renderWorkshops(workshops) {
-    if(workshops.length <= 0)
-      return <h1 style={{textAlign: 'center'}}>Não existe nenhum workshop cadastrado.</h1>
+  renderWorkshops() {
+    if(this.props.workshops.length <= 0)
+      return (<h1 style={{textAlign: 'center'}}>Não existe nenhum workshop cadastrado.</h1>);
 
-    return workshops.map((workshop, _id) => (
-      <Workshop key={_id} workshop={workshop} />
+    return this.props.workshops.map((workshop) => (
+      <WorkshopItem key={workshop._id} workshop={workshop} />
     ));
   }
 
-
-  /**
-   * [componentDidMount description]
-   * @return {[type]} [description]
-   */
-  componentDidMount() {
-    this.state = {};
-      this.request =  Meteor.call('workshop.list', (err, response) => {
-        if(err) {
-          console.error(err);
-          return false;
-        }
-
-        var renderer = this.renderWorkshops(response)
-
-        this.setState({
-          workshops: renderer
-        });
-
-      })
-  }
 
   /**
    * Render the component
@@ -92,13 +69,27 @@ export default class Workshops extends Component {
             <AddIcon />
           </FloatingActionButton>
         <div>
-          { this.state.workshops }
+          { this.renderWorkshops() }
         </div>
       </section>
     );
   }
 }
 
+
+Workshops.propTypes = {
+  workshops: PropTypes.array.isRequired
+};
+
 Workshops.childContextTypes = { 
   muiTheme: PropTypes.object.isRequired
 };
+
+
+export default createContainer(() => {
+  Meteor.subscribe('workshops');
+
+  return {
+    workshops: Workshop.find().fetch()
+  }
+}, Workshops);
