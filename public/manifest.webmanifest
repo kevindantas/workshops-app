@@ -1,0 +1,13 @@
+{
+	"short_name": "Desenvolvedor Multiplataforma",
+	"name": "Desenvolvedor Multiplataforma - Web & Mobile",
+	"description": "Curdo Pós-Tecnico Desenvolvedor Multiplataforma - Web & Mobile",
+	"background_color": "#202020",
+	"theme_color": "#FFFFFF",
+	"display": "standalone",
+	"start_url": "/",
+	"gcm_sender_id": "90694028920",
+	"related_applcations": [{
+		"platform": "web"
+	}]
+}
