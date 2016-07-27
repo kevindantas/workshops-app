@@ -1,3 +1,5 @@
+import { Meteor } from 'meteor/meteor';
+
 /**
  * Workshop imports
  */
@@ -19,4 +21,8 @@ import '../imports/api/group/Group.js';
 /**
  * Notification imports
  */
-import '../imports/api/notification/Notification.js';
+
+
+Meteor.publish('notification', function() {
+	return Notification
+});

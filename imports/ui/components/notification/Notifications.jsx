@@ -1,6 +1,11 @@
 import { Meteor } from 'meteor/meteor';
+import { createContainer } from 'meteor/react-meteor-data';
+
 import React, { Component, PropTypes } from 'react';
 
+import {Notification} from '/imports/api/notification/Notification';
+
+import { List, ListItem } from 'material-ui/List';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import AddIcon from 'material-ui/svg-icons/content/add';
 
@@ -11,7 +16,7 @@ import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 /**
  * List all notifications from the app
  */
-export default class Notifications extends Component {
+class Notifications extends Component {
 
   /**
    * @constructor
@@ -41,38 +46,19 @@ export default class Notifications extends Component {
    * @return {[type]}           [description]
    */
   renderNotifications(notifications) {
-    if(notifications.length <= 0)
-      return <h1 style={{textAlign: 'center'}}>Não existe nenhuma notificação cadastrado.</h1>
 
-    return notifications.map((notification, _id) => (
-      <div key={_id}>
-        <h3> {notification.title} </h3>
-        <p> {notification.description} </p>
-      </div>
-    ));
+    if(this.props.notifications.length <= 0) {
+      return (
+        <ListItem className="no-records" primaryText="Não existe nenhuma notificação cadastrado." />
+      );
+    }
+
+
+    return this.props.notifications.map((notification) => (
+        <ListItem key={notification._id} primaryText={ notification.title } secondaryText={ notification.description } secondaryTextLines={1} />
+    ))
   }
 
-
-  /**
-   * [componentDidMount description]
-   * @return {[type]} [description]
-   */
-  componentDidMount() {
-    this.state = {};
-      this.request =  Meteor.call('notification.list', (err, response) => {
-        if(err) {
-          console.error(err);
-          return false;
-        }
-
-        var renderer = this.renderNotifications(response)
-
-        this.setState({
-          notifications: renderer
-        });
-
-      })
-  }
 
   /**
    * Render the component
@@ -93,14 +79,28 @@ export default class Notifications extends Component {
           <FloatingActionButton style={fabStyle} href="/notification/create">
             <AddIcon />
           </FloatingActionButton>
-        <div>
-          { this.state.notifications }
-        </div>
+        <List>
+          { this.renderNotifications() }
+        </List>
       </section>
     );
   }
 }
 
+Notifications.propTypes = {
+  notifications: PropTypes.array.isRequired
+};
+
+
 Notifications.childContextTypes = { 
   muiTheme: PropTypes.object.isRequired
 };
+
+
+
+export default createContainer(() => {
+  Meteor.subscribe('notifications');
+  return {
+    notifications: Notification.find().fetch()
+  };
+}, Notifications)
