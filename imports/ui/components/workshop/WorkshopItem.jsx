@@ -40,7 +40,7 @@ export default class WorkshopItem extends Component {
     return (
       <Card className="workshop">
   		  <CardMedia children={
-          <img src="/images/logo.svg" alt="Desenvolvedor Multiplataform" /> 
+          <img src="/images/workshop.jpg" alt="Desenvolvedor Multiplataform" /> 
         } />
 
         <CardTitle title={this.props.workshop.title} />
