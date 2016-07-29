@@ -18,9 +18,12 @@ object[type="application/gas-events-uni"] {
   display: none; }
 
 .main-layout main {
-  max-width: 720px;
-  min-height: calc(100vh - 110px);
-  margin: auto; }
+  margin: auto;
+  padding: 0 16px; }
+
+@media (min-width: 720px) {
+  .main-layout main {
+    max-width: 720px; } }
 
 .main-layout .workshop {
   margin: 8px; }
@@ -42,6 +45,19 @@ object[type="application/gas-events-uni"] {
     text-shadow: 10px 10px 0px #B0BEC5; }
   .not-found h2 {
     margin-top: 1rem; }
+
+form fieldset {
+  width: 100%;
+  margin: 0; }
+
+form .title-field {
+  margin: -16px;
+  padding: 16px; }
+  form .title-field label, form .title-field input {
+    font-size: 28px !important; }
+  form .title-field label {
+    opacity: 0.7;
+    line-height: 10px !important; }
 
 .login-layout {
   color: #fff;
