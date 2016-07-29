@@ -46,8 +46,10 @@ export default class Chips extends Component {
 		var text = e.target.value.trim(),
 			keyCode = e.keyCode;
 
+		if(keyCode == 13)
+			e.preventDefault();
 		
-		if(keyCode != 13 || !text)
+		if(keyCode != 13 || !text) 
 			return false;
 
 		this.chipsData = this.state.chipsData;
@@ -115,16 +117,17 @@ export default class Chips extends Component {
 	 */
 	render() {
 		return (
-			<div>
+			<div style={this.props.style} >
 				<div className="chips-wrapper" style={this.chipsWrapperStyle} >
 					{this.state.chipsData.map(this.renderChip, this)}
 				</div>
-				<TextField hintText={this.props.hintText} onKeyDown={this.addChip.bind(this)} />
+				<TextField hintText={this.props.hintText} onKeyDown={this.addChip.bind(this)} fullWidth={true} />
 			</div>
 		);
 	}
 }
 
 Chips.propTypes = {
-	hintText: PropTypes.string.isRequired
+	hintText: PropTypes.string.isRequired,
+	style: PropTypes.object,
 };
