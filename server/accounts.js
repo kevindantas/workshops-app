@@ -67,3 +67,8 @@ Accounts.onCreateUser((options, user) => {
 	return user;
 
 });
+
+
+Accounts.onLogin((options, user) => {
+	FlowRouter.go('/workshop');
+})
