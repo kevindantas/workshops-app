@@ -101,23 +101,6 @@ export default class Login extends Component {
 				</h1>
 
 				<fieldset>
-					<LoginField  />
-					<TextField 
-						type="password" 
-						required={true}
-						hintText="********" 
-						floatingLabelText="Senha" 
-						floatingLabelFixed={true}  
-						hintStyle={this.hintStyle}
-						inputStyle={this.inputStyle}
-						floatingLabelStyle={this.labelStyle}
-						fullWidth={true} />
-					<RaisedButton label="Entrar" primary={true} className="button rounded" />
-
-					<a href="#">  Caso seja seu primeiro acesso clique aqui ou use uma das redes sociais abaixo </a>
-				</fieldset>
-
-				<fieldset>
 					<GithubButton label="Login com Github" className="button" onClick={this.loginGithub.bind(this)} />
 					<FacebookButton label="Login com o Facebook" className="button" onClick={this.loginFacebook.bind(this)} />
 					<GoogleButton label="Login com o Google" className="button" onClick={this.loginGoogle.bind(this)} />

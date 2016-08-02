@@ -1,3 +1,6 @@
+form, fieldset {
+  box-sizing: border-box; }
+
 a {
   color: #455a64; }
 
@@ -60,18 +63,18 @@ form .title-field {
     line-height: 10px !important; }
 
 .login-layout {
+  background: #ECC63F url(/images/bg-illustration.svg) no-repeat;
+  background-size: cover;
   color: #fff;
-  background: #202020;
   min-height: 100vh;
   overflow-y: hidden; }
   .login-layout a {
     color: #F2F2F2; }
   .login-layout .login-form {
     max-width: 540px;
-    margin: auto;
-    box-shadow: 0 0 28px 2px rgba(0, 0, 0, 0.5);
     padding: 16px;
-    margin-top: 5%; }
+    margin-top: 5%;
+    margin-left: 5%; }
     .login-layout .login-form fieldset {
       margin-bottom: 40px; }
   .login-layout .logo {
@@ -79,14 +82,19 @@ form .title-field {
     background: url("../images/logo.svg") no-repeat center 50px;
     background-size: 75%;
     text-indent: -9999px;
-    padding: 32px;
+    padding: 60px;
     padding-top: 60px;
-    margin: 0 auto; }
+    margin-bottom: 60px; }
   .login-layout fieldset > div {
     width: 100%; }
 
 @media (max-width: 640px) {
+  .login-layout {
+    background-position: center 380px; }
   .login-layout .login-form {
     box-shadow: none;
-    margin-top: 0; } }
+    margin-top: 0;
+    margin-left: 0; }
+    .login-layout .login-form .logo {
+      margin-bottom: 40px; } }
 
