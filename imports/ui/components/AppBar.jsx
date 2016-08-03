@@ -14,7 +14,7 @@ import ExitIcon from 'material-ui/svg-icons/action/exit-to-app';
 import HelpIcon from 'material-ui/svg-icons/action/help';
 
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import { lightBlue500, blueGrey600, white } from 'material-ui/styles/colors';
+import { amber500, blueGrey600, blueGrey800 } from 'material-ui/styles/colors';
 
 /**
  * AppBar used by the app
@@ -31,9 +31,9 @@ export default class AppBarComponent extends Component {
 		return {
 			muiTheme: getMuiTheme({
 				palette: {
-					primary1Color: lightBlue500,
+					primary1Color: amber500,
 					textColor: blueGrey600,
-					alternateTextColor: white
+					alternateTextColor: blueGrey800
 				}
 			})
 		}

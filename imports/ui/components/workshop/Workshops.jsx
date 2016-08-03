@@ -60,12 +60,13 @@ class Workshops extends Component {
       position: 'fixed',
       bottom: '5%',
       right: '5%',
-      zIndex: 10
+      zIndex: 10,
+      backgroundColor: '#4CAF50' 
     };
 
     return (
       <section className="workshop-list">
-          <FloatingActionButton style={fabStyle} href="/workshop/create">
+          <FloatingActionButton  backgroundColor={fabStyle.backgroundColor} style={fabStyle} href="/workshop/create">
             <AddIcon />
           </FloatingActionButton>
         <div>

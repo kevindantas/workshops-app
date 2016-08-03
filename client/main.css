@@ -8,7 +8,8 @@ body {
 
 .drawer-logo {
 	padding-top: 80px;
-	background: #202020;
+	background: #ECC63F url(images/bg-illustration.svg) no-repeat center -200px;
+	background-size: 190%;
 }
 
 .drawer-logo img {

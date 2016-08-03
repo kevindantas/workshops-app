@@ -6,6 +6,7 @@ import React, { Component, PropTypes } from 'react';
 import EventIcon from 'material-ui/svg-icons/action/event';
 import TimeIcon from 'material-ui/svg-icons/device/access-time';
 import AssignmentIcon from 'material-ui/svg-icons/action/assignment';
+import LabelIcon from 'material-ui/svg-icons/action/label';
 
 import TextField from 'material-ui/TextField';
 import DatePicker from 'material-ui/DatePicker';
@@ -13,6 +14,7 @@ import TimePicker from 'material-ui/TimePicker';
 import RaisedButton from 'material-ui/RaisedButton';
 
 import Chips from '../Chips';
+import ImagePreviewField from '../imagePreview/ImagePreviewField';
 
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import { lightBlue500, blueGrey600, white } from 'material-ui/styles/colors';
@@ -28,6 +30,23 @@ export default class WorkshopCreate extends Component {
     this.state = {
       error: {}
     }
+
+    this.styles = {
+      icon: {
+        display: 'inline',
+        verticalAlign: 'middle'
+      },
+      inputIcon: {
+        display: 'inline-block',
+        width: 'calc(100% - 32px)',
+        marginLeft: 8
+      }
+    }
+
+    this.titleLabel = {
+      // color: '#fff'
+    }
+
   }
 
 
@@ -98,6 +117,16 @@ export default class WorkshopCreate extends Component {
   }
 
 
+
+  /**
+   * Upload cover file
+   * @return {} [description]
+   */
+  uploadCover() {
+
+  }
+
+
   /**
    * Create new workshop
    *
@@ -105,6 +134,10 @@ export default class WorkshopCreate extends Component {
    */
   createWorkshop(e) {
     e.preventDefault();
+
+    console.log(this.refs.cover)
+    console.log(this.refs.title)
+
 
     if(!this.validateForm()) return;
 
@@ -117,7 +150,7 @@ export default class WorkshopCreate extends Component {
       tags: this.refs.tags.state.chipsData
     };
 
-
+    return false;
     Meteor.call('workshop.create', workshop, (err, response, a) => {
       if(err){
         console.error(err);
@@ -145,16 +178,24 @@ export default class WorkshopCreate extends Component {
 
     return (
       <form className="workshop-create" onSubmit={this.createWorkshop.bind(this)} noValidate>
-        <fieldset>
-          <TextField 
-            ref="title"
-            type="text" 
-            required={true}
-            errorText={this.state.error.title}
-            floatingLabelText={i18n('workshop.title')} 
-            inputStyle={this.inputStyle}
-            floatingLabelStyle={this.labelStyle}
-            fullWidth={true} />
+        <fieldset style={{padding: 0}}>
+          <div className="title-field">
+            <TextField 
+              ref="title"
+              type="text" 
+              required={true}
+              errorText={this.state.error.title}
+              floatingLabelText={i18n('workshop.title')} 
+              inputStyle={this.inputStyle}
+              floatingLabelStyle={this.labelStyle}
+              underlineFocusStyle={{
+                // borderColor: '#fff',
+              }}
+              underlineStyle={{
+                bottom: 4
+              }}
+              fullWidth={true} />
+          </div>
 
           <TextField 
             ref="description"
@@ -168,39 +209,88 @@ export default class WorkshopCreate extends Component {
             floatingLabelStyle={this.labelStyle}
             fullWidth={true} />
 
+          <h4>Capa</h4>
+          <ImagePreviewField
+            uploadAction={this.uploadCover.bind(this)}
+            fullWidth={true}
+            ref="cover"
+            name="cover"
+            required={true} />
 
-          <TextField 
-            ref="vacancies"
-            min={0}
-            type="number" 
-            required={true}
-            errorText={this.state.error.vacancies}
-            floatingLabelText={i18n('workshop.vacancies')} 
-            inputStyle={this.inputStyle}
-            floatingLabelStyle={this.labelStyle} />
+          <div>
+            <AssignmentIcon style={this.styles.icon} />
+            <TextField 
+              ref="vacancies"
+              min={0}
+              type="number" 
+              required={true}
+              style={this.styles.inputIcon}
+              errorText={this.state.error.vacancies}
+              floatingLabelText={i18n('workshop.vacancies')} 
+              inputStyle={this.inputStyle}
+              floatingLabelStyle={this.labelStyle} />
+          </div>
 
-          <DatePicker 
-            ref="date"
-            autoOk={true}
-            required={true}
-            errorText={this.state.error.date}
-            disableYearSelection={true}
-            hintText={i18n('workshop.date')} 
-            formatDate={function(date) {
-              return date.toLocaleDateString();
-            }} />
 
-          <TimePicker 
-            ref="hour"
-            required={true}
-            errorText={this.state.error.hour}
-            hintText={i18n('workshop.hour')} 
-            onChange={(e, hour) => {
-              this.value = hour;
-              return hour;
-            }} />
+          <h4 style={{
+            marginBottom: 0
+          }}>Data e hora</h4>
 
-          <Chips hintText={i18n('label.addTag')} ref="tags" />
+          <div style={{
+                width: '48%',
+                float: 'left',
+                marginRight: '4%'
+              }}>
+
+
+            <EventIcon style={this.styles.icon} />
+            <DatePicker 
+              leftIcon={<EventIcon />}
+              ref="date"
+              autoOk={true}
+              required={true}
+              errorText={this.state.error.date}
+              disableYearSelection={true}
+              hintText={i18n('workshop.date')} 
+              style={this.styles.inputIcon}
+              textFieldStyle={{
+                width: '100%'
+              }}
+              formatDate={function(date) {
+                return date.toLocaleDateString();
+              }} />
+          </div>
+
+
+          <div style={{
+                width: '48%',
+                float: 'left',
+              }}>
+            <TimeIcon style={this.styles.icon} />
+            <TimePicker 
+              ref="hour"
+              required={true}
+              errorText={this.state.error.hour}
+              hintText={i18n('workshop.hour')} 
+              style={this.styles.inputIcon}
+              textFieldStyle={{
+                width: '100%'
+              }}
+              onChange={(e, hour) => {
+                this.value = hour;
+                return hour;
+              }} />
+          </div>
+
+          <div style={{
+            textAlign: 'center',
+            float: 'left',
+            width: '100%'
+          }}>
+            <h4>Tags</h4>
+            <LabelIcon style={this.styles.icon} />
+            <Chips hintText={i18n('label.addTag')} ref="tags" fullWidth={true}  style={this.styles.inputIcon} />
+          </div>
 
 
           <RaisedButton 

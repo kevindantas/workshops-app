@@ -83,9 +83,10 @@ export default class Login extends Component {
 	_loginCallback (err) {
 		if (err) {
 			console.error(err);
-
 			return err;
 		}
+
+		FlowRouter.go('/workshop');
 	}
 
 	/**
@@ -99,23 +100,6 @@ export default class Login extends Component {
 				<h1 className="logo">
 					Desenvolvedor Multiplataforma Web &amp; Mobile
 				</h1>
-
-				<fieldset>
-					<LoginField  />
-					<TextField 
-						type="password" 
-						required={true}
-						hintText="********" 
-						floatingLabelText="Senha" 
-						floatingLabelFixed={true}  
-						hintStyle={this.hintStyle}
-						inputStyle={this.inputStyle}
-						floatingLabelStyle={this.labelStyle}
-						fullWidth={true} />
-					<RaisedButton label="Entrar" primary={true} className="button rounded" />
-
-					<a href="#">  Caso seja seu primeiro acesso clique aqui ou use uma das redes sociais abaixo </a>
-				</fieldset>
 
 				<fieldset>
 					<GithubButton label="Login com Github" className="button" onClick={this.loginGithub.bind(this)} />
