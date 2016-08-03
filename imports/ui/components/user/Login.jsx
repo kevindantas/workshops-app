@@ -83,9 +83,10 @@ export default class Login extends Component {
 	_loginCallback (err) {
 		if (err) {
 			console.error(err);
-
 			return err;
 		}
+
+		FlowRouter.go('/workshop');
 	}
 
 	/**
