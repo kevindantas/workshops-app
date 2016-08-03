@@ -115,8 +115,15 @@ export default class ImagePreviewField extends Component {
 
 
 	getInputNode() {
-		console.log(this);
-		return this.input;
+		return this._reactInternalInstance.getNativeNode();
+	}
+
+
+
+
+	removeImage(image) {
+		console.log(images);
+		console.log(this.getInputNode())
 	}
 
 
@@ -142,7 +149,7 @@ export default class ImagePreviewField extends Component {
 							return (
 								<div style={this.styles.previewWrapper}>
 									{ this.state.images.map((image) => (
-										<ImagePreview key={image.name + image.lastModified} image={image} />
+										<ImagePreview key={image.name + image.lastModified} image={image} onRemoveImage={this.removeImage.bind(this)} />
 									)) }
 								</div>
 							)
@@ -154,7 +161,7 @@ export default class ImagePreviewField extends Component {
 							<div style={this.styles.previewWrapper}>
 								<h2>multiple</h2>
 								{ this.state.images.map((image) => (
-									<ImagePreview key={image.name + image.lastModified} image={image} />
+									<ImagePreview key={image.name + image.lastModified} image={image} onRemoveImage={this.removeImage.bind(this)} />
 								)) }
 							</div>
 						)
