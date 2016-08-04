@@ -22,6 +22,7 @@ export default class ImagePreview extends Component {
 
 		this.styles = {
 			image: {
+				width: '100%',
 				maxWidth: 400
 			},
 			closeButton: {
@@ -50,6 +51,28 @@ export default class ImagePreview extends Component {
 	}
 
 
+
+	/**
+	 * Handle close button click
+	 * @return {[type]} [description]
+	 */
+	onClickHandle() {
+		this._reactInternalInstance.getNativeNode().remove();
+		this._reactInternalInstance.unmountComponent();
+	}
+
+
+
+	/**
+	 * componentWillUnmount
+	 * @return {[type]} [description]
+	 */
+	componentWillUnmount() {
+		console.log(this);
+		this.props.onRemoveImage(this.props.previewImage);
+	}
+
+
 	/**
      * Render the component
      * 
@@ -58,7 +81,7 @@ export default class ImagePreview extends Component {
 	render () {
 		return (
 			<Paper style={this.styles.wrapper} zDepth={2}>
-				<IconButton style={this.styles.closeButton}> <CloseIcon /> </IconButton>
+				<IconButton style={this.styles.closeButton} onClick={this.onClickHandle.bind(this)}> <CloseIcon /> </IconButton>
 				<img src={this.state.previewImage} alt={this.props.image.name} style={this.styles.image} />
 			</Paper>
 		);
