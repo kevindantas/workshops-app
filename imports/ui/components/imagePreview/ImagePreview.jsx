@@ -36,17 +36,13 @@ export default class ImagePreview extends Component {
 			}
 		};
 
-		console.log(this.props.image);
-
-
+		// Preview image
 		var reader = new FileReader();
-
 		reader.onload = (event) => {
 			this.setState({
 				previewImage: event.target.result
 			})
 		}
-
 		reader.readAsDataURL(this.props.image);
 	}
 
@@ -54,22 +50,9 @@ export default class ImagePreview extends Component {
 
 	/**
 	 * Handle close button click
-	 * @return {[type]} [description]
 	 */
 	onClickHandle() {
-		this._reactInternalInstance.getNativeNode().remove();
-		this._reactInternalInstance.unmountComponent();
-	}
-
-
-
-	/**
-	 * componentWillUnmount
-	 * @return {[type]} [description]
-	 */
-	componentWillUnmount() {
-		console.log(this);
-		this.props.onRemoveImage(this.props.previewImage);
+		this.props.onRemoveImage(this.props.image);
 	}
 
 

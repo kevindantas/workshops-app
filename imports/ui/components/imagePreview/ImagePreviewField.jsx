@@ -114,16 +114,26 @@ export default class ImagePreviewField extends Component {
 	}
 
 
-	getInputNode() {
-		return this._reactInternalInstance.getNativeNode();
-	}
 
 
-
-
+	/**
+	 * Remove image from the component
+	 * @param  {object} image File instance
+	 */
 	removeImage(image) {
-		console.log(images);
-		console.log(this.getInputNode())
+		var images = this.state.images;
+
+		images = images.filter((img) => {
+			let lastModifiedEqual = img.lastModified == image.lastModified;
+			let sizeEqual = img.size == image.size;
+			let nameEqual = img.name == image.name;
+
+			return !(lastModifiedEqual && sizeEqual && nameEqual);
+		});
+
+		this.setState({
+			images: images
+		});
 	}
 
 
@@ -138,7 +148,7 @@ export default class ImagePreviewField extends Component {
 			<div>
 				<div className="wrapper" style={this.styles.wrapper}>
 					{(() => {
-						if(this.state.visibleDisplayText)
+						if(this.state.images.length < 1 || this.props.multiple)
 							return (<span>{ this.props.displayText || 'Drag and drop your files here' }</span>)
 					})() }
 
