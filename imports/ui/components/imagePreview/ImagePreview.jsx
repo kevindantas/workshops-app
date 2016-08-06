@@ -22,6 +22,7 @@ export default class ImagePreview extends Component {
 
 		this.styles = {
 			image: {
+				width: '100%',
 				maxWidth: 400
 			},
 			closeButton: {
@@ -35,18 +36,23 @@ export default class ImagePreview extends Component {
 			}
 		};
 
-		console.log(this.props.image);
-
-
+		// Preview image
 		var reader = new FileReader();
-
 		reader.onload = (event) => {
 			this.setState({
 				previewImage: event.target.result
 			})
 		}
-
 		reader.readAsDataURL(this.props.image);
+	}
+
+
+
+	/**
+	 * Handle close button click
+	 */
+	onClickHandle() {
+		this.props.onRemoveImage(this.props.image);
 	}
 
 
@@ -58,7 +64,7 @@ export default class ImagePreview extends Component {
 	render () {
 		return (
 			<Paper style={this.styles.wrapper} zDepth={2}>
-				<IconButton style={this.styles.closeButton}> <CloseIcon /> </IconButton>
+				<IconButton style={this.styles.closeButton} onClick={this.onClickHandle.bind(this)}> <CloseIcon /> </IconButton>
 				<img src={this.state.previewImage} alt={this.props.image.name} style={this.styles.image} />
 			</Paper>
 		);

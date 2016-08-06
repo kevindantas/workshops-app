@@ -135,8 +135,23 @@ export default class WorkshopCreate extends Component {
   createWorkshop(e) {
     e.preventDefault();
 
-    console.log(this.refs.cover)
-    console.log(this.refs.title)
+    var cover = this.refs.cover.state.images;
+
+
+    if(cover.length > 0) {
+      var file = cover[0];
+      Meteor.call('file.create', file, (err, response) => {
+        if(err) {
+          throw new Error(err);
+        }
+
+        console.log(response);
+
+        FlowRouter.go('/workshop');
+
+      })
+
+    }
 
 
     if(!this.validateForm()) return;
@@ -194,7 +209,9 @@ export default class WorkshopCreate extends Component {
               underlineStyle={{
                 bottom: 4
               }}
-              fullWidth={true} />
+              fullWidth={true} 
+              defaultValue="Progressive Web Apps"
+              />
           </div>
 
           <TextField 
@@ -207,7 +224,9 @@ export default class WorkshopCreate extends Component {
             floatingLabelText={i18n('workshop.description')} 
             inputStyle={this.inputStyle}
             floatingLabelStyle={this.labelStyle}
-            fullWidth={true} />
+            fullWidth={true} 
+            defaultValue="Progressive Web Applications usam como vantagens as novas tecnologias para trazer o melhor da dos sites mobiles e aplicações nativas para o usuário."
+            />
 
           <h4>Capa</h4>
           <ImagePreviewField
@@ -228,7 +247,8 @@ export default class WorkshopCreate extends Component {
               errorText={this.state.error.vacancies}
               floatingLabelText={i18n('workshop.vacancies')} 
               inputStyle={this.inputStyle}
-              floatingLabelStyle={this.labelStyle} />
+              floatingLabelStyle={this.labelStyle} 
+              defaultValue={15} />
           </div>
 
 
@@ -245,7 +265,6 @@ export default class WorkshopCreate extends Component {
 
             <EventIcon style={this.styles.icon} />
             <DatePicker 
-              leftIcon={<EventIcon />}
               ref="date"
               autoOk={true}
               required={true}
