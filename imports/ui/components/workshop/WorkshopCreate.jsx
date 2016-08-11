@@ -119,40 +119,12 @@ export default class WorkshopCreate extends Component {
 
 
   /**
-   * Upload cover file
-   * @return {} [description]
-   */
-  uploadCover() {
-
-  }
-
-
-  /**
    * Create new workshop
    *
    * @param {object} e - Triggered Event
    */
   createWorkshop(e) {
     e.preventDefault();
-
-    var cover = this.refs.cover.state.images;
-
-
-    if(cover.length > 0) {
-      var file = cover[0];
-      Meteor.call('file.create', file, (err, response) => {
-        if(err) {
-          throw new Error(err);
-        }
-
-        console.log(response);
-
-        FlowRouter.go('/workshop');
-
-      })
-
-    }
-
 
     if(!this.validateForm()) return;
 
@@ -165,18 +137,52 @@ export default class WorkshopCreate extends Component {
       tags: this.refs.tags.state.chipsData
     };
 
-    return false;
-    Meteor.call('workshop.create', workshop, (err, response, a) => {
-      if(err){
-        console.error(err);
-        return false;
-      }
+    var cover = this.refs.cover.state.images;
 
-      FlowRouter.go('/workshop', {
-        snackbar: i18n('feedbaack.create')
-      });
+    this.uploadCover(cover).then((response) => {
+      workshop.cover = response;
+      console.log(workshop);
+      Meteor.call('workshop.create', workshop, (err, response, a) => {
+        if(err) {
+          console.error(err);
+          return false;
+        }
+
+        FlowRouter.go('/workshop', {
+          snackbar: i18n('feedbaack.create')
+        });
+      })
     })
-    
+  }
+
+
+
+
+  /**
+   * Upload cover file to GridFS
+   * 
+   * @param  {array} cover - Images array form the input
+   * @return {Promise} - Upload file
+   */
+  uploadCover(cover) {
+
+    return new Promise((resolve, reject) => {
+      if(cover.length > 0) {
+        var file = cover[0];
+        Meteor.call('file.create', file, (err, response) => {
+          if(err) {
+            throw new Error(err);
+          }
+
+
+          // Resolve with the file id's
+          resolve(response.toJSONValue()); 
+        })
+      } else {
+        resolve(null); // Resolve with null value if empty cover array
+      }
+    });
+
   }
 
 

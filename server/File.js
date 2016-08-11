@@ -1,11 +1,11 @@
 import { Mongo } from 'meteor/mongo';
 
-var fileStore = new FS.Store.GridFS("file");
+// var fileStore = new FS.Store.GridFS("file");
 
-var File = new FS.Collection("file", {
- stores: [fileStore]
+var fileStore = new FileCollection('file', {
+	resumable: true, 
+
 });
-
 
 
 Meteor.methods({
@@ -19,7 +19,7 @@ Meteor.methods({
 		if(!this.userId)
 			throw new Meteor.Error('not-authorized');
 		
-		return File.insert(data);
+		return fileStore.insert(data);
 	},
 
 

@@ -28,6 +28,7 @@ Meteor.methods({
 			hour: data.hour,
 			vacancies: data.vacancies,
 			tags: treatedTags,
+			cover: data.cover,
 			comments: [],
 			files: []
 		})
