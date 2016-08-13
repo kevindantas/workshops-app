@@ -97,4 +97,6 @@ form .title-field {
     margin-left: 0; }
     .login-layout .login-form .logo {
       margin-bottom: 40px; } }
-
+a {
+  text-decoration: none;
+}

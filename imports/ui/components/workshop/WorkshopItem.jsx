@@ -39,31 +39,33 @@ export default class WorkshopItem extends Component {
   render() {
     return (
       <Card className="workshop">
-  		  <CardMedia children={
-          <img src="/images/workshop.jpg" alt="Desenvolvedor Multiplataform" /> 
-        } />
+        <a href={`/workshop/${this.props.workshop._id}`}>
+    		  <CardMedia children={
+            <img src="/images/workshop.jpg" alt="Desenvolvedor Multiplataform" /> 
+          } />
 
-        <CardTitle title={this.props.workshop.title} />
+          <CardTitle title={this.props.workshop.title} />
 
-        <CardText> { this.props.workshop.description } </CardText>
+          <CardText> { this.props.workshop.description } </CardText>
 
-        <CardActions className="meta-infos">
-          <div>
-            <EventIcon />
-            { this.props.workshop.date.toLocaleDateString() }
-          </div>
+          <CardActions className="meta-infos">
+            <div>
+              <EventIcon />
+              { this.props.workshop.date.toLocaleDateString() }
+            </div>
 
-          <div>
-            <TimeIcon />
-            { this.props.workshop.hour.toLocaleTimeString() }
-          </div>
+            <div>
+              <TimeIcon />
+              { this.props.workshop.hour.toLocaleTimeString() }
+            </div>
 
-          <div>
-            <AssignmentIcon />
-            { this.props.workshop.vacancies }
-          </div>
+            <div>
+              <AssignmentIcon />
+              { this.props.workshop.vacancies }
+            </div>
 
-        </CardActions>
+          </CardActions>
+        </a>
       </Card>
     );
   }
