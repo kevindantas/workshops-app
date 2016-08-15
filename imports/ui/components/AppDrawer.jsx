@@ -15,8 +15,19 @@ export default class AppDrawer extends Component {
 	 */
 	constructor(props) {
 		super(props);
+		
 
-		this.state = {open: false};
+		if(window.innerWidth > 720) {
+			this.state = {
+				isOpen: true,
+				isDocked: true
+			};
+		} else {
+			this.state = {
+				isOpen: false,
+				isDocked: false
+			};
+		}
 	}
 
 
@@ -41,7 +52,7 @@ export default class AppDrawer extends Component {
 	 * Toggle the drawer state
 	 */
 	handleToggle () {
-		this.setState({open: !this.state.open})
+		this.setState({open: !this.state.isOpen})
 	};
 
 
@@ -49,7 +60,7 @@ export default class AppDrawer extends Component {
 	 * Close Drawer
 	 */
 	handleClose () {
-		this.setState({open: false});
+		this.setState({isOpen: false});
 	}
 
 
@@ -61,8 +72,8 @@ export default class AppDrawer extends Component {
 		return (
 			<div>
 				<Drawer
-		          docked={false}
-		          open={this.state.open}
+		          docked={this.state.isDocked}
+		          open={this.state.isOpen}
 		          onRequestChange={(open) => this.setState({open})}
 		        >
 		        	<div className="drawer-logo"> 

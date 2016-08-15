@@ -26,7 +26,8 @@ object[type="application/gas-events-uni"] {
 
 @media (min-width: 720px) {
   .main-layout main {
-    max-width: 720px; } }
+    max-width: 720px;
+    padding-left: 256px; } }
 
 .main-layout .workshop {
   margin: 8px; }

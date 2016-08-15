@@ -23,6 +23,21 @@ import { amber500, blueGrey600, blueGrey800 } from 'material-ui/styles/colors';
  */
 export default class AppBarComponent extends Component {
 
+
+	/**
+	 * @constructor
+	 */
+	constructor(props) {
+		super(props);
+
+		if(window.innerWidth > 720) {
+			this.titleStyle = {
+				paddingLeft: 256,
+				textAlign: 'center'
+			}
+		}
+	}
+
 	/**
 	 * Get child context
 	 * @return {[type]} [description]
@@ -49,6 +64,7 @@ export default class AppBarComponent extends Component {
 			<div>
 				<AppBar
 			    title={this.props.title}
+			    titleStyle={this.titleStyle}
 			    iconElementLeft={
 			    	<AppDrawer />
 			    }
