@@ -52,7 +52,7 @@ export default class AppDrawer extends Component {
 	 * Toggle the drawer state
 	 */
 	handleToggle () {
-		this.setState({open: !this.state.isOpen})
+		this.setState({isOpen: !this.state.isOpen})
 	};
 
 
@@ -60,7 +60,8 @@ export default class AppDrawer extends Component {
 	 * Close Drawer
 	 */
 	handleClose () {
-		this.setState({isOpen: false});
+		if(window.innerWidth < 720) 
+			this.setState({isOpen: false});
 	}
 
 
@@ -74,7 +75,7 @@ export default class AppDrawer extends Component {
 				<Drawer
 		          docked={this.state.isDocked}
 		          open={this.state.isOpen}
-		          onRequestChange={(open) => this.setState({open})}
+		          onRequestChange={(isOpen) => this.setState({isOpen})}
 		        >
 		        	<div className="drawer-logo"> 
 		        		<img src="/images/logo.svg" alt="Desenvolvedor Multiplataform" /> 
