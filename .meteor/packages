@@ -25,6 +25,6 @@ blaze-html-templates@1.0.4
 kadira:flow-router
 service-configuration@1.0.10
 anti:i18n
-meteortoys:allthings
-cfs:gridfs
+# meteortoys:allthings
+# cfs:gridfs
 vsivsi:file-collection
