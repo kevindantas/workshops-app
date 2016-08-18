@@ -31,9 +31,7 @@ FlowRouter.route('/workshop/create', {
 FlowRouter.route('/workshop/:id', {
 	action(params) {
 		Meteor.subscribe('workshops');
-		var workshop = Workshop.find({id: params.id}).fetch();
-		console.log(params);
-		console.log(workshop);
+		var workshop = Workshop.find({_id: params.id}).fetch().pop();
 		mount(MainLayout, {
 			content: (<WorkshopView pageTitle={workshop.title} workshop={workshop} />),
 		})

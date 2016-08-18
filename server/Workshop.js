@@ -58,6 +58,10 @@ Meteor.methods({
 
 
 		Workshop.remove(query);
+	},
+
+	'workshop.subscribe'(workshop) {
+		return Workshop.update({_id: workshop._id}, {$addToSet: { students: this.userId }});
 	}
 });
 
